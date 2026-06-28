@@ -4,85 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accounting Community Discord</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Base page styling */
-        body {
+        /* Base Variables and Reset */
+        :root {
+            --discord: #5865F2;
+            --discord-hover: #4752C4;
+            --primary: #0f172a; /* Deep slate */
+            --accent: #10b981;  /* Financial green */
+            --bg-light: #f8fafc;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            color: #1f2937;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            gap: 10px;
         }
 
-        /* Center card container */
-        .container {
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        .logo i {
+            color: var(--accent);
+        }
+
+        /* Hero Section with Background Image */
+        .hero {
+            /* Using a high-quality financial/desk stock photo with a dark overlay for readability */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 120px 20px;
             text-align: center;
-            max-width: 500px;
-            width: 90%;
         }
 
-        /* Headings and text */
-        h1 {
-            color: #2563eb; /* Professional blue */
-            margin-bottom: 1rem;
-            font-size: 2.2rem;
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #4b5563;
-            margin-bottom: 2.5rem;
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            color: #cbd5e1;
         }
 
         /* Discord Button Styling */
         .discord-btn {
-            background-color: #5865F2; /* Official Discord color */
+            background-color: var(--discord);
             color: white;
             text-decoration: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 16px 36px;
+            font-size: 1.25rem;
+            font-weight: 600;
             border-radius: 8px;
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
         }
 
         .discord-btn:hover {
-            background-color: #4752C4;
-            transform: translateY(-2px);
+            background-color: var(--discord-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
         }
 
-        /* SVG Icon sizing */
-        .icon {
-            width: 28px;
-            height: 28px;
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: -40px auto 60px auto; /* Pulls it up slightly over the hero */
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #ecfdf5;
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px auto;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Accounting Community</h1>
-        <p>Welcome to the ultimate hub for accounting professionals, students, and number crunchers. Join our Discord to network, share resources, study for exams, and talk shop!</p>
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-calculator"></i>
+            Accounting Community
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Master Your <span>Accounting</span> Journey</h1>
+        <p>The premier Discord community for CPAs, finance students, and industry professionals. Network, share insights, and grow your career with us.</p>
         
         <a href="https://discord.gg/stcnM4PpFH" class="discord-btn" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" fill="currentColor" viewBox="0 0 127.14 96.36">
-                <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.2,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-            </svg>
-            Join the Server
+            <i class="fa-brands fa-discord"></i>
+            Join the Discord
         </a>
-    </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <h3>Professional Networking</h3>
+            <p>Connect with peers, mentors, and industry experts from around the globe to build your professional circle.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3>Exam Study Groups</h3>
+            <p>Tackling the CPA, ACCA, or CMA? Join dedicated study channels, share notes, and keep each other accountable.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3>Career Resources</h3>
+            <p>Get resume reviews, interview advice, and stay updated on the latest tax laws and accounting software.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Accounting Community. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
